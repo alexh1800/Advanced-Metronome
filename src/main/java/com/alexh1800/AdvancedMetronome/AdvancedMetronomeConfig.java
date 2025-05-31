@@ -356,23 +356,15 @@ public interface AdvancedMetronomeConfig extends Config
 	/////////////////  Advanced  ///////////////////
 	////////////////////////////////////////////////
 
+	/*
 	@ConfigSection(
 			name = "Advanced Settings",
-			description = "Hotkey Settings",
+			description = "Advanced",
 			position = 40
 	)
 	String advancedSettings = "advancedSettings";
+	*/
 
-	@ConfigItem(
-			keyName = "useLocalTicks",
-			name = "Use Local Ticks (Smoother But Less Accurate Metronome)",
-			description = "Smooth out jitter by averaging tick intervals locally",
-			section = advancedSettings,
-			position = 1
-	)
-	default boolean useLocalTicks() {
-		return false;
-	}
 
 
 
