@@ -30,12 +30,20 @@ public interface AdvancedMetronomeConfig extends Config
 	)
 	default boolean enableVisualMetronome(){return true;}
 
+	@ConfigItem(
+			keyName = "enableTickSmoothing",
+			name = "Enable Tick Smoothing",
+			description = "More consistent but less accurate ticks",
+			position = 3
+	)
+	default boolean enableTickSmoothing(){return false;}
+
 	@Range(min = 1, max = 2)
 	@ConfigItem(
 			keyName = "enabledBeats",
 			name = "Enabled Beats",
 			description = "Which beats are enabled for rotating through",
-			position = 3
+			position = 4
 	)
 	default int enabledBeats(){return 2;}
 
@@ -44,7 +52,7 @@ public interface AdvancedMetronomeConfig extends Config
 			keyName = "tickCount",
 			name = "Tick Count",
 			description = "Number of ticks in the metronome loop (1 to 8)",
-			position = 3
+			position = 4
 	)
 	default int tickCount(){return 4;}
 
@@ -342,6 +350,29 @@ public interface AdvancedMetronomeConfig extends Config
 			position = 9
 	)
 	default TickSoundOption beat2Tick8Sound() { return TickSoundOption.TICK_HIHAT; }
+
+
+	////////////////////////////////////////////////
+	/////////////////  Advanced  ///////////////////
+	////////////////////////////////////////////////
+
+	@ConfigSection(
+			name = "Advanced Settings",
+			description = "Hotkey Settings",
+			position = 40
+	)
+	String advancedSettings = "advancedSettings";
+
+	@ConfigItem(
+			keyName = "useLocalTicks",
+			name = "Use Local Ticks (Smoother But Less Accurate Metronome)",
+			description = "Smooth out jitter by averaging tick intervals locally",
+			section = advancedSettings,
+			position = 1
+	)
+	default boolean useLocalTicks() {
+		return false;
+	}
 
 
 
